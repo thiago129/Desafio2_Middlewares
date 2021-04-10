@@ -25,7 +25,7 @@ function checksExistsUserAccount(request, response, next) {
 
 function checksCreateTodosUserAvailability(request, response, next) {
   // Complete aqui
-  if((request.user.pro == false && request.user.todo.length < 10) || request.user.pro == true){
+  if((request.user.pro == false && request.user.todos.length < 10) || request.user.pro == true){
     return next()
   }
   return response.status(403).json({error: "User not PRO"})
@@ -44,7 +44,7 @@ function checksTodoExists(request, response, next) {
     request.user = user
     return next();
   }
-  
+
   return response.status(404).json({error: "User not found"})
 }
 
